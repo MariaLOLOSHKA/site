@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>CHIC Moscow Guide</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000"/>
+</head>
+
+<body>
+    <div class="bg-image"></div>
+    
+    <button class="top-btn menu-btn" id="panelToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <a href="#" class="top-btn register-btn" id="registerBtn">SIGN IN</a>
+    <div class="side-panel" id="sidePanel">
+        <div class="panel-content">
+            <h3>Меню</h3>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="map.html">Карта заведений</a></li>
+                <li><a href="review.html">Отзывы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="header">
+        <div class="logo">CHIC Moscow</div>
+        <div class="subtitle">Гид по самым вкусным местам Москвы</div>
+    </div>
+    
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Найти заведения...">
+            <div class="search-icon"></div>
+        </div>
+    </div>
+    
+    <div class="site-description-wrapper">
+        <div class="site-description">
+            <h2>CHIC MOSCOW</h2>
+            <p>Гид по самым модным местам столицы</p>
+            <p>Только проверенные заведения</p>
+            <p>Рестораны • Бары • Кофейни</p>
+        </div>
+    </div>
+    
+    <div class="actual-section">Актуальное</div>
+
+    <div class="establishments-container">
+        <!-- Bro&n -->
+        <div class="establishment-card">
+            <a href="https://bronrest.ru/" target="_blank">
+                <div class="establishment-image" style="background-image: url('images/bron.jpg')">
+                    <div class="image-overlay"></div>
+                    <div class="establishment-name">Bro&n</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Кофемания -->
+        <div class="establishment-card">
+            <a href="https://coffeemania.ru/" target="_blank">
+                <div class="establishment-image" style="background-image: url('images/coffeemania.jpg')">
+                    <div class="image-overlay"></div>
+                    <div class="establishment-name">Кофемания</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Мария Санта -->
+        <div class="establishment-card">
+            <a href="https://cafesanta.ru/rus/" target="_blank">
+                <div class="establishment-image" style="background-image: url('images/santa.jpg')">
+                    <div class="image-overlay"></div>
+                    <div class="establishment-name">Мария Санта</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- DIDI -->
+        <div class="establishment-card">
+            <a href="https://tomesto.ru/moskva/places/didi" target="_blank">
+                <div class="establishment-image" style="background-image: url('images/DIDI.png')">
+                    <div class="image-overlay"></div>
+                    <div class="establishment-name">DIDI</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div id="feedback-widget">
+        <div>Обратная связь</div>
+        <div>
+            <form id="feedbackForm">
+                <div style="margin-bottom: 10px;">
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="email" name="email" placeholder="Ваш email" required>
+                </div>
+                <textarea name="message" placeholder="Ваше сообщение..." required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="feedback-trigger">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+    
+    <div id="feedback-success">
+        Сообщение отправлено! Спасибо.
+    </div>
+
+    <script src="js/menu.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/feedback.js"></script>
+    
+    <script>
+        // Обработка формы без PHP
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('feedback-success');
+            
+            // Здесь можно добавить отправку через Formspree или другой сервис
+            console.log('Форма отправлена:', {
+                name: this.name.value,
+                email: this.email.value,
+                message: this.message.value
+            });
+            
+            // Показываем уведомление
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+            
+            this.reset();
+        });
+        
+        // Остальной JS код остается без изменений
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.establishment-card');
+            cards.forEach(card => {
+                card.style.border = '3px solid blue';
+                card.style.margin = '20px 0';
+            });
+        });
+    </script>
+</body>
+</html>
